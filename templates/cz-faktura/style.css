@@ -1,0 +1,404 @@
+/* CZ Faktura – styl pro Dompdf (a mPDF). Barva šablony z nastavení pluginu se doplní automaticky. */
+
+/* Stránka */
+@page {
+	margin-top: 1cm;
+	margin-bottom: 3cm;
+	margin-left: 1.6cm;
+	margin-right: 1.6cm;
+	footer: docFooter;
+}
+
+body {
+	background: #fff;
+	color: #000;
+	margin: 0;
+	font-family: 'Open Sans', sans-serif; /* Open Sans je součástí pluginu a obsahuje české znaky */
+	font-size: 8.5pt;
+	line-height: 100%; /* fixes inherit dompdf bug */
+	overflow-wrap: anywhere;
+}
+
+h1, h2, h3, h4 {
+	font-weight: bold;
+	margin: 0;
+}
+
+h1 {
+	font-size: 15pt;
+	margin: 0 0 6mm;
+}
+
+h3, h4 {
+	font-size: 8.5pt;
+}
+
+ol, ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+li {
+	margin-bottom: 0.5em;
+}
+
+p {
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+/* Tabulky */
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+	page-break-inside: always;
+	border: 0;
+	margin: 0;
+	padding: 0;
+}
+
+th, td {
+	vertical-align: top;
+	text-align: left;
+}
+
+table.container {
+	width: 100%;
+	border: 0;
+}
+
+tr.no-borders,
+td.no-borders {
+	border: 0 !important;
+	padding: 0 !important;
+	width: auto;
+}
+
+div.bottom-spacer {
+	clear: both;
+	height: 8mm;
+}
+
+span.label {
+	font-weight: bold;
+}
+
+.party-label {
+	font-size: 7pt;
+	text-transform: uppercase;
+	letter-spacing: 0.5pt;
+	color: #666;
+	margin-bottom: 1.5mm;
+}
+
+/* Hlavička */
+table.head {
+	margin-bottom: 8mm;
+}
+
+td.header img {
+	max-height: 2.5cm; /* nastavení výšky loga v pluginu má přednost */
+	max-width: 100%;
+	width: auto;
+}
+
+td.header {
+	font-size: 16pt;
+	font-weight: 700;
+}
+
+td.shop-info {
+	width: 40%;
+}
+
+.shop-name h3 {
+	font-size: 10pt;
+	margin-bottom: 1mm;
+}
+
+.document-type-label .document-number {
+	font-weight: normal;
+}
+
+/* Odběratel, doručení, údaje dokladu */
+table.order-data-addresses {
+	width: 100%;
+	margin-bottom: 8mm;
+}
+
+table.order-data-addresses td.address {
+	overflow-wrap: anywhere;
+}
+
+td.billing-address {
+	width: 32%;
+}
+
+td.shipping-address {
+	width: 28%;
+}
+
+td.order-data {
+	width: 40%;
+}
+
+td.order-data table {
+	width: 100%;
+}
+
+td.order-data table th,
+td.order-data table td {
+	padding: 0.25mm 0;
+}
+
+td.order-data table th {
+	font-weight: normal;
+	color: #444;
+	padding-right: 2mm;
+	width: 48%;
+}
+
+.customer-id,
+.shop-id {
+	font-weight: bold;
+}
+
+/* Položky */
+table.order-details,
+table.notes-totals {
+	width: 100%;
+	page-break-before: avoid;
+}
+
+.order-details tr,
+.notes-totals tr {
+	page-break-inside: avoid;
+	page-break-after: auto;
+}
+
+.order-details td,
+.order-details th {
+	border-bottom: 1px solid #ccc;
+	padding: 1.6mm 1.2mm;
+}
+
+.order-details thead th {
+	font-weight: bold;
+	color: #fff;
+	background-color: #000;
+	border-color: #000;
+	font-size: 7.5pt;
+}
+
+.order-details .product {
+	width: auto;
+}
+
+.order-details .quantity,
+.order-details .rate {
+	width: 7%;
+	text-align: right;
+	white-space: nowrap;
+}
+
+.order-details.with-vat .price {
+	width: 13%;
+}
+
+.order-details.without-vat .price {
+	width: 17%;
+}
+
+.order-details .price,
+.vat-recap .price,
+.totals .price {
+	text-align: right;
+	white-space: nowrap;
+}
+
+.order-details td.total {
+	font-weight: bold;
+}
+
+.order-details tr.cz-row--shipping td,
+.order-details tr.cz-row--fee td {
+	color: #333;
+}
+
+.item-name {
+	font-weight: bold;
+}
+
+/* product bundles compatibility */
+.order-details tr.bundled-item td.product {
+	padding-left: 5mm;
+}
+
+.order-details tr.product-bundle td,
+.order-details tr.bundled-item td {
+	border: 0;
+}
+
+.order-details tr.bundled-item.hidden {
+	display: none;
+}
+
+/* Meta položky (varianty, doplňky) */
+.item-meta {
+	margin: 1.5mm 0 0;
+	font-size: 7pt;
+	color: #333;
+}
+
+/* V Dompdf je .wc-item-meta <ul>, v mPDF <div>. */
+.wc-item-meta {
+	margin: 0;
+}
+
+.wc-item-meta li {
+	margin: 0.5mm 0 0;
+}
+
+.wc-item-meta li p,
+.wc-item-meta li dd,
+.wc-item-meta li strong {
+	display: inline;
+}
+
+/* Rekapitulace, poznámky, součty */
+td.notes-cell {
+	width: 58%;
+	padding-right: 8mm !important;
+	padding-top: 5mm !important;
+}
+
+td.totals-cell {
+	width: 42%;
+	padding-top: 5mm !important;
+}
+
+h3.recap-title {
+	margin-bottom: 2mm;
+}
+
+table.vat-recap {
+	width: 100%;
+}
+
+table.vat-recap th,
+table.vat-recap td {
+	padding: 1.2mm;
+	border-bottom: 1px solid #ccc;
+}
+
+table.vat-recap thead th {
+	font-size: 7.5pt;
+	border-bottom: 1px solid #000;
+}
+
+table.vat-recap .rate {
+	width: 16%;
+}
+
+.discount-note {
+	margin-top: 4mm;
+	font-size: 7.5pt;
+	color: #333;
+}
+
+.document-notes,
+.customer-notes {
+	margin-top: 5mm;
+	overflow-wrap: anywhere;
+}
+
+.document-notes h3,
+.customer-notes h3 {
+	margin-bottom: 1mm;
+}
+
+table.totals {
+	width: 100%;
+	table-layout: fixed;
+}
+
+table.totals th,
+table.totals td {
+	padding: 1.4mm 1.2mm;
+	border-bottom: 1px solid #ccc;
+}
+
+table.totals th.description {
+	font-weight: normal;
+	width: 55%;
+}
+
+table.totals tr.order_total th,
+table.totals tr.order_total td {
+	font-size: 11pt;
+	font-weight: bold;
+	color: #fff;
+	background-color: #000;
+	border: 0;
+	padding: 2.4mm 1.2mm;
+}
+
+.payment-status {
+	margin-top: 4mm;
+}
+
+.payment-status.paid {
+	font-weight: bold;
+}
+
+.payment-status.bank {
+	padding: 2.5mm;
+	border: 1px solid #000;
+}
+
+.payment-status.bank h3 {
+	margin-bottom: 1mm;
+}
+
+/* mPDF */
+.rtl {
+	direction: rtl;
+}
+
+/* Patička – při změně výšky upravte i bottom a @page margin-bottom */
+#footer {
+	position: absolute;
+	bottom: -2cm;
+	left: 0;
+	right: 0;
+	height: 2cm;
+	text-align: center;
+	border-top: 0.1mm solid gray;
+	margin-bottom: 0;
+	padding-top: 2mm;
+	font-size: 7.5pt;
+	color: #444;
+}
+
+/* Čísla stránek */
+.pagenum:before {
+	content: counter(page);
+}
+
+.pagenum,
+.pagecount {
+	font-family: sans-serif;
+}
+
+/* Výdejní místo (Local Pickup) */
+.pickup-location-details {
+	font-size: 7pt;
+	margin-top: 2mm;
+	line-height: 1;
+}
