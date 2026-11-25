@@ -18,6 +18,13 @@ $recap    = $payer ? $cz->vat_recap() : array();
 $supplier = $cz->supplier_ids();
 $customer = $cz->customer_ids();
 $accounts = $cz->bank_accounts();
+
+// QR platba (pluginy ji vypisují za detaily objednávky) patří vedle platebních údajů, jiný obsah zůstane pod tabulkou.
+ob_start();
+do_action( 'wpo_wcpdf_after_order_details', $type, $this->order );
+$after_details = trim( (string) ob_get_clean() );
+$is_qr         = false !== stripos( $after_details, '<img' ) && preg_match( '/class=["\'][^"\']*qr/i', $after_details );
+$qr_payment    = $is_qr ? $after_details : '';
 $title    = $payer ? __( 'Faktura – daňový doklad', 'cz-faktura' ) : __( 'Faktura', 'cz-faktura' );
 ?>
 
@@ -236,6 +243,10 @@ $title    = $payer ? __( 'Faktura – daňový doklad', 'cz-faktura' ) : __( 'Fa
 					</table>
 				<?php endif; ?>
 
+				<?php if ( $qr_payment ) : ?>
+					<div class="qr-payment"><?php echo $qr_payment; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- výstup háčku ?></div>
+				<?php endif; ?>
+
 				<?php if ( $totals['discount'] > 0 && $totals['coupons'] ) : ?>
 					<p class="discount-note">
 						<?php
@@ -323,7 +334,9 @@ $title    = $payer ? __( 'Faktura – daňový doklad', 'cz-faktura' ) : __( 'Fa
 	</tbody>
 </table>
 
-<?php do_action( 'wpo_wcpdf_after_order_details', $type, $this->order ); ?>
+<?php if ( ! $qr_payment ) : ?>
+	<?php echo $after_details; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- výstup háčku ?>
+<?php endif; ?>
 
 <div class="bottom-spacer"></div>
 

@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.1.0
+
+- QR platba se vykreslí vlevo pod rekapitulací DPH, vedle platebních údajů, a nepřetéká na druhou stránku.
+- Menší okraje stránky a mezery, na jednu stránku se vejde víc položek.
+
 ## 1.0.0
 
 - První verze jako samostatný plugin. Nahrazuje starou šablonu `wellness2` v *Custom PDF Template extension*.

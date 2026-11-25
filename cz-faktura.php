@@ -3,7 +3,7 @@
  * Plugin Name:          CZ Faktura
  * Plugin URI:           https://github.com/AlkoKod/cz-faktura
  * Description:          Česká šablona faktury (daňového dokladu) a dodacího listu pro PDF Invoices & Packing Slips for WooCommerce: rozpis DPH podle sazeb včetně dopravy a poplatků, IČO/DIČ dodavatele i odběratele, DUZP, variabilní symbol a platební údaje.
- * Version:              1.0.0
+ * Version:              1.1.0
  * Author:               AlkoKod
  * Author URI:           https://github.com/AlkoKod
  * License:              GPL-2.0-or-later
@@ -18,7 +18,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'CZ_FAKTURA_VERSION', '1.0.0' );
+define( 'CZ_FAKTURA_VERSION', '1.1.0' );
 define( 'CZ_FAKTURA_DIR', __DIR__ );
 
 require_once __DIR__ . '/includes/class-invoice-data.php';

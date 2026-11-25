@@ -2,10 +2,10 @@
 
 /* Stránka */
 @page {
-	margin-top: 1cm;
-	margin-bottom: 3cm;
-	margin-left: 1.6cm;
-	margin-right: 1.6cm;
+	margin-top: 0.8cm;
+	margin-bottom: 1.8cm;
+	margin-left: 1.3cm;
+	margin-right: 1.3cm;
 	footer: docFooter;
 }
 
@@ -26,7 +26,7 @@ h1, h2, h3, h4 {
 
 h1 {
 	font-size: 15pt;
-	margin: 0 0 6mm;
+	margin: 0 0 4mm;
 }
 
 h3, h4 {
@@ -82,7 +82,7 @@ td.no-borders {
 
 div.bottom-spacer {
 	clear: both;
-	height: 8mm;
+	height: 2mm;
 }
 
 span.label {
@@ -99,11 +99,11 @@ span.label {
 
 /* Hlavička */
 table.head {
-	margin-bottom: 8mm;
+	margin-bottom: 5mm;
 }
 
 td.header img {
-	max-height: 2.5cm; /* nastavení výšky loga v pluginu má přednost */
+	max-height: 2cm; /* nastavení výšky loga v pluginu má přednost */
 	max-width: 100%;
 	width: auto;
 }
@@ -129,7 +129,7 @@ td.shop-info {
 /* Odběratel, doručení, údaje dokladu */
 table.order-data-addresses {
 	width: 100%;
-	margin-bottom: 8mm;
+	margin-bottom: 5mm;
 }
 
 table.order-data-addresses td.address {
@@ -185,7 +185,7 @@ table.notes-totals {
 .order-details td,
 .order-details th {
 	border-bottom: 1px solid #ccc;
-	padding: 1.6mm 1.2mm;
+	padding: 1.2mm;
 }
 
 .order-details thead th {
@@ -275,12 +275,12 @@ table.notes-totals {
 td.notes-cell {
 	width: 58%;
 	padding-right: 8mm !important;
-	padding-top: 5mm !important;
+	padding-top: 4mm !important;
 }
 
 td.totals-cell {
 	width: 42%;
-	padding-top: 5mm !important;
+	padding-top: 4mm !important;
 }
 
 h3.recap-title {
@@ -366,6 +366,21 @@ table.totals tr.order_total td {
 	margin-bottom: 1mm;
 }
 
+/* QR platba vedle platebních údajů */
+.qr-payment {
+	margin-top: 4mm;
+	page-break-inside: avoid;
+}
+
+.qr-payment p {
+	margin-bottom: 1mm;
+}
+
+.qr-payment img {
+	width: 2.8cm;
+	height: 2.8cm;
+}
+
 /* mPDF */
 .rtl {
 	direction: rtl;
@@ -374,10 +389,10 @@ table.totals tr.order_total td {
 /* Patička – při změně výšky upravte i bottom a @page margin-bottom */
 #footer {
 	position: absolute;
-	bottom: -2cm;
+	bottom: -1.2cm;
 	left: 0;
 	right: 0;
-	height: 2cm;
+	height: 1.1cm;
 	text-align: center;
 	border-top: 0.1mm solid gray;
 	margin-bottom: 0;
